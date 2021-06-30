@@ -5,11 +5,6 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
-import org.springframework.core.io.ClassPathResource;
 
 import br.edu.infnet.appConstrucao.model.domain.Acabamento;
 import br.edu.infnet.appConstrucao.model.domain.Cotacao;
@@ -18,7 +13,7 @@ import br.edu.infnet.appConstrucao.model.domain.Estrutura;
 import br.edu.infnet.appConstrucao.model.domain.Fundacao;
 import br.edu.infnet.appConstrucao.model.exceptions.NecessitaFundacaoProfundaException;
 import br.edu.infnet.appConstrucao.model.exceptions.PisoNuloException;
-import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaException;
+import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaOuNegativaException;
 
 public class AppTeste {
 
@@ -60,7 +55,7 @@ public class AppTeste {
 						a1.setPintura(campos[5]);
 						a1.setRodape("S".equalsIgnoreCase(campos[6]));
 						
-						escrita.write(a1.getProduto()+"\r\n");
+						escrita.write(a1.obterProduto());
 						
 						break;
 
@@ -70,7 +65,7 @@ public class AppTeste {
 						e1.setTamanho_ferragem(Float.valueOf(campos[5]));
 						e1.setMetalica("S".equalsIgnoreCase(campos[6]));
 						
-						escrita.write(e1.getProduto()+"\r\n");
+						escrita.write(e1.obterProduto());
 						
 						break;
 
@@ -80,7 +75,7 @@ public class AppTeste {
 						f1.setTipo(campos[5]);
 						f1.setProfundidade(Float.valueOf(campos[6]));
 						
-						escrita.write(f1.getProduto()+"\r\n");
+						escrita.write(f1.obterProduto());
 						
 						break;
 
@@ -97,7 +92,7 @@ public class AppTeste {
 				escrita.close();
 				fileW.close();
 				
-			} catch (IOException | PisoNuloException | TamanhoFerragemZeradaException | NecessitaFundacaoProfundaException e) {
+			} catch (IOException | PisoNuloException | TamanhoFerragemZeradaOuNegativaException | NecessitaFundacaoProfundaException e) {
 				System.out.println(e.getMessage());
 			}
 

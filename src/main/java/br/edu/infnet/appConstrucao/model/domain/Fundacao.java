@@ -39,6 +39,12 @@ public class Fundacao extends Produto {
 		if("radier".equalsIgnoreCase(tipo)) {
 			ValorMaoObraTipoFundPorDia = 50;
 		}
+		if("sapata corrida".equalsIgnoreCase(tipo)) {
+			ValorMaoObraTipoFundPorDia = 70;
+		}
+		if("estaca".equalsIgnoreCase(tipo)) {
+			ValorMaoObraTipoFundPorDia = 100;
+		}
 		
 		return this.getPrazoEntrega() * ValorMaoObraTipoFundPorDia;		
 	}

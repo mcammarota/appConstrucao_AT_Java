@@ -18,10 +18,13 @@ public class Acabamento extends Produto {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append(";");
+		sb.append("Piso: ");
 		sb.append(this.piso);
 		sb.append(";");
+		sb.append("Pintura: ");
 		sb.append(this.pintura);
 		sb.append(";");
+		sb.append("Rodapé: ");
 		sb.append(this.rodape ? "S" : "N");
 
 		return sb.toString();
@@ -30,16 +33,28 @@ public class Acabamento extends Produto {
 	@Override
 	public float calcularValorMaoObra() throws PisoNuloException {
 		
-		if(this.piso == null) {
+		if(this.piso.isBlank() | this.piso.isEmpty()) {
 			throw new PisoNuloException("O piso não pode ser nulo!");
 		}
 		
 		float ValorMaoObraPisoPorDia = 0;
 		if("porcelanato".equalsIgnoreCase(piso)) {
 			ValorMaoObraPisoPorDia = 100;
+		} else if("cerâmica".equalsIgnoreCase(piso)){
+			ValorMaoObraPisoPorDia = 80;
+		} else {
+			ValorMaoObraPisoPorDia = 60;
+		}
+		
+		float ValorMaoObraPinturaPorDia = 0;
+		if("acetinada".equalsIgnoreCase(pintura)) {
+			ValorMaoObraPinturaPorDia = 40;
+		}
+		else {
+			ValorMaoObraPinturaPorDia = 30;
 		}
 
-		return this.getPrazoEntrega() * ValorMaoObraPisoPorDia;
+		return this.getPrazoEntrega() * (ValorMaoObraPisoPorDia + ValorMaoObraPinturaPorDia);
 	}
 
 	public String getPiso() {

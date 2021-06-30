@@ -1,6 +1,6 @@
 package br.edu.infnet.appConstrucao.model.domain;
 
-import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaException;
+import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaOuNegativaException;
 
 public class Estrutura extends Produto {
 
@@ -28,12 +28,12 @@ public class Estrutura extends Produto {
 	}
 	
 	@Override
-	public float calcularValorMaoObra() throws TamanhoFerragemZeradaException {
+	public float calcularValorMaoObra() throws TamanhoFerragemZeradaOuNegativaException {
 		
 		float ValorMaoObraMetalicaPorDia = 0;
 		
-		if(this.tamanho_ferragem == 0) {
-			throw new TamanhoFerragemZeradaException("O tamanho da ferragem não pode ser igual a 0!");
+		if(this.tamanho_ferragem <= 0) {
+			throw new TamanhoFerragemZeradaOuNegativaException("O tamanho da ferragem não pode ser menor ou igual a 0!");
 		}
 		
 		if(tamanho_ferragem > 20) {

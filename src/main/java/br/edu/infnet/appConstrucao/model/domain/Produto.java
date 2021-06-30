@@ -2,7 +2,7 @@ package br.edu.infnet.appConstrucao.model.domain;
 
 import br.edu.infnet.appConstrucao.model.exceptions.NecessitaFundacaoProfundaException;
 import br.edu.infnet.appConstrucao.model.exceptions.PisoNuloException;
-import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaException;
+import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaOuNegativaException;
 
 public abstract class Produto {
 
@@ -16,11 +16,12 @@ public abstract class Produto {
 		this.prazoEntrega = prazoEntrega;
 	}
 	
-	public String getProduto() throws TamanhoFerragemZeradaException, PisoNuloException, NecessitaFundacaoProfundaException {
+	public String obterProduto() throws PisoNuloException, TamanhoFerragemZeradaOuNegativaException, NecessitaFundacaoProfundaException {
 		
 		StringBuilder sb = new StringBuilder();
 		sb.append(this.descricao);
 		sb.append(";");
+		sb.append("Valor mão de obra: ");
 		sb.append(this.calcularValorMaoObra());
 		sb.append("\r\n");
 		
@@ -39,7 +40,7 @@ public abstract class Produto {
 		return sb.toString();
 	}
 	
-	public abstract float calcularValorMaoObra() throws TamanhoFerragemZeradaException, PisoNuloException, NecessitaFundacaoProfundaException;
+	public abstract float calcularValorMaoObra() throws PisoNuloException, TamanhoFerragemZeradaOuNegativaException, NecessitaFundacaoProfundaException;
 	
 	public String getDescricao() {
 		return descricao;
