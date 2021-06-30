@@ -1,0 +1,4 @@
+0;Cotação do dia;marcos;marcos@marcos.com;(21)99999-9999
+A;acabamento do projeto;100;90;porcelanato;acetinada;S
+E;estrutura do projeto;200;30;concreto armado convencional;10;N
+F;fundação do projeto;300;45;S;radier;2
