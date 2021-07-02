@@ -62,7 +62,7 @@ public class AppTeste {
 					case "E":
 						Estrutura e1 = new Estrutura(campos[1], Float.valueOf(campos[2]), Integer.valueOf(campos[3]));
 						e1.setDescricao(campos[4]);
-						e1.setTamanho_ferragem(Float.valueOf(campos[5]));
+						e1.setTamanhoFerragem(Float.valueOf(campos[5]));
 						e1.setMetalica("S".equalsIgnoreCase(campos[6]));
 						
 						escrita.write(e1.obterProduto());

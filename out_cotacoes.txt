@@ -1,3 +1,3 @@
-acabamento do projeto;12600.0
-estrutura do projeto;4500.0
-fundação do projeto;2250.0
+acabamento do projeto;Valor mão de obra: 12600.0
+estrutura do projeto;Valor mão de obra: 4500.0
+fundação do projeto;Valor mão de obra: 2250.0

@@ -5,7 +5,7 @@ import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaOuNegat
 public class Estrutura extends Produto {
 
 	private String descricao;
-	private float tamanho_ferragem;
+	private float tamanhoFerragem;
 	private boolean metalica;
 	
 	public Estrutura(String descricao, float valor, int prazoEntrega) {
@@ -20,7 +20,7 @@ public class Estrutura extends Produto {
 		sb.append(";");
 		sb.append(this.descricao);
 		sb.append(";");
-		sb.append(this.tamanho_ferragem);
+		sb.append(this.tamanhoFerragem);
 		sb.append(";");
 		sb.append(this.metalica ? "S" : "N");
 		
@@ -32,11 +32,11 @@ public class Estrutura extends Produto {
 		
 		float ValorMaoObraMetalicaPorDia = 0;
 		
-		if(this.tamanho_ferragem <= 0) {
+		if(this.tamanhoFerragem <= 0) {
 			throw new TamanhoFerragemZeradaOuNegativaException("O tamanho da ferragem não pode ser menor ou igual a 0!");
 		}
 		
-		if(tamanho_ferragem > 20) {
+		if(tamanhoFerragem > 20) {
 			ValorMaoObraMetalicaPorDia = 200;
 		} else {
 			ValorMaoObraMetalicaPorDia = 150;
@@ -53,12 +53,12 @@ public class Estrutura extends Produto {
 		this.descricao = descricao;
 	}
 
-	public float getTamanho_ferragem() {
-		return tamanho_ferragem;
+	public float getTamanhoFerragem() {
+		return tamanhoFerragem;
 	}
 
-	public void setTamanho_ferragem(float tamanho_ferragem) {
-		this.tamanho_ferragem = tamanho_ferragem;
+	public void setTamanhoFerragem(float tamanho_ferragem) {
+		this.tamanhoFerragem = tamanho_ferragem;
 	}
 
 	public boolean isMetalica() {
