@@ -99,6 +99,6 @@ public class AppTeste {
 			} finally {
 				System.out.println("Processamento finalizado!");
 			}
-		}
 	}
+}
 
