@@ -1,16 +1,23 @@
 package br.edu.infnet.appConstrucao.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import br.edu.infnet.appConstrucao.model.domain.Aluno;
+import br.edu.infnet.appConstrucao.model.domain.Usuario;
+import br.edu.infnet.appConstrucao.model.service.UsuarioService;
 
-
+@SessionAttributes("user")
 @Controller
 public class AcessoController {
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@GetMapping(value = "/")
 	public String telaLogin() {
@@ -20,20 +27,18 @@ public class AcessoController {
 	
 	@PostMapping(value = "/login")
 	public String login(Model model, @RequestParam String email, @RequestParam String senha) {
+
+		Usuario usuario = usuarioService.validar(email, senha);
 		
-		Aluno aluno = null;
-		if(email.equals(senha)) {
+		if(usuario != null) {
 			
-			aluno = new Aluno("Marcos Cammarota", email);
-		}
-		
-		if(aluno != null) {
+			model.addAttribute("user", usuario);
 			
 			return "index";
 		} else {
 
-			//request.setAttribute("mensagem", "Autenticação inválida para o usuário " + email +"!");
 			model.addAttribute("mensagem", "Autenticação inválida para o usuário " + email);
+			
 			return "login";
 		}
 

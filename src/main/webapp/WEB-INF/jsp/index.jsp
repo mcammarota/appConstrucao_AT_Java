@@ -10,7 +10,7 @@
 <body>
 
 	<div class="container">
-	  <h2>Marcos Cammarota</h2>
+	  <h2>Olá, ${user.nome}!</h2>
 	  <h3>Java WEB</h3>
 	  <h4>AT</h4>
 	  
