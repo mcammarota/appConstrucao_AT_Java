@@ -16,4 +16,9 @@ public class UsuarioService {
 		
 		return usuarioRepository.autenticacao(email, senha);
 	}
+	
+	public void incluirUsuario(Usuario usuario) {
+		
+		usuarioRepository.save(usuario);
+	}
 }

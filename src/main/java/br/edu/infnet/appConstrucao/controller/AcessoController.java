@@ -20,6 +20,12 @@ public class AcessoController {
 	private UsuarioService usuarioService;
 
 	@GetMapping(value = "/")
+	public String telaHome() {
+		
+		return "index";
+	}
+	
+	@GetMapping(value = "/login")
 	public String telaLogin() {
 		
 		return "login";

@@ -20,20 +20,25 @@
 			</div>
 		</c:if>
 	
-	  <h2>Autenticação</h2>
-	  <form action="/login" method="post">
+	  <h2>Cadastro de Usuários</h2>
+	  <form action="/usuario" method="post">
 
+		<div class="form-group">
+	      <label>Nome:</label>
+	      <input type="text" class="form-control" placeholder="Entre com o seu e-mail" name="nome">
+	    </div>
+	    
 	    <div class="form-group">
 	      <label>E-mail:</label>
-	      <input value="marcos@cammarota.com" type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
+	      <input type="email" class="form-control" placeholder="Entre com o seu e-mail" name="email">
 	    </div>
 
 		<div class="form-group">
 	      <label>Senha:</label>
-	      <input value="123" type="password" class="form-control" placeholder="Entre com a sua senha" name="senha">
+	      <input type="password" class="form-control" placeholder="Entre com a sua senha" name="senha">
 	    </div>
 		
-	    <button type="submit" class="btn btn-default">Entrar</button>
+	    <button type="submit" class="btn btn-default">Cadastrar</button>
 	  </form>
 	</div>
 	
