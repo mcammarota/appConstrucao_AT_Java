@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,32 +17,28 @@
 	    </div>
 	    <ul class="nav navbar-nav">
 	      <li class="active"><a href="#">Home</a></li>
-	      <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Page 1 <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-	          <li><a href="#">Page 1-1</a></li>
-	          <li><a href="#">Page 1-2</a></li>
-	          <li><a href="#">Page 1-3</a></li>
-	        </ul>
-	      </li>
-	      <li><a href="#">Page 2</a></li>
+	      <c:if test="${not empty user}">
+	      	  <li><a href="/aluno/lista">Aluno</a></li>
+	      </c:if>
 	    </ul>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      <c:if test="${empty user}">
+		      <li><a href="/usuario"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+		      <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      </c:if>
+	      <c:if test="${not empty user}">
+	      	  <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+	      </c:if>
 	    </ul>
 	  </div>
 	</nav>
 
 	<div class="container">
-	  <h2>Olá, ${user.nome}!</h2>
 	  <h3>Java WEB</h3>
 	  <h4>AT</h4>
 	  
 	  <a href="https://github.com/mcammarota">GitHub</a>
-	  
-	  <br>
-	  
-	  <a href="/aluno/lista">Cadatramento de alunos</a>	 
+
 	</div>
 </body>
 </html>
