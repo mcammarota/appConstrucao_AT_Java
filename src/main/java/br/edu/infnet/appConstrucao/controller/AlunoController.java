@@ -25,9 +25,9 @@ public class AlunoController {
 	}
 	
 	@GetMapping(value = "/aluno/lista")
-	public String telaLista(Model model) {
+	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		model.addAttribute("lista", alunoService.obterLista());
+		model.addAttribute("lista", alunoService.obterLista(usuario));
 		
 		return "aluno/lista";
 	}
@@ -43,7 +43,7 @@ public class AlunoController {
 		
 		model.addAttribute("msg", mensagem);
 		
-		return telaLista(model);
+		return telaLista(model, usuario);
 	}
 	
 	@GetMapping(value = "/aluno/{id}/excluir")

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.edu.infnet.appConstrucao.model.domain.Aluno;
+import br.edu.infnet.appConstrucao.model.domain.Usuario;
 import br.edu.infnet.appConstrucao.model.repository.AlunoRepository;
 
 @Service
@@ -13,6 +14,11 @@ public class AlunoService {
 	
 	@Autowired
 	AlunoRepository alunoRepository = null;
+	
+	public List<Aluno> obterLista(Usuario usuario){
+		
+		return alunoRepository.obterLista(usuario.getId());
+	}
 	
 	public List<Aluno> obterLista(){
 		

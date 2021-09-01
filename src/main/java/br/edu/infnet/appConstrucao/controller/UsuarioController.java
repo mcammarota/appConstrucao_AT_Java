@@ -2,8 +2,11 @@ package br.edu.infnet.appConstrucao.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import br.edu.infnet.appConstrucao.model.domain.Usuario;
 import br.edu.infnet.appConstrucao.model.service.UsuarioService;
@@ -16,7 +19,15 @@ public class UsuarioController {
 	
 	@GetMapping(value = "/usuario")
 	public String telaCadastro() {
-		return "cadastro";
+		return "usuario/cadastro";
+	}
+	
+	@GetMapping(value = "/usuario/lista")
+	public String telaLista(Model model) {
+		
+		model.addAttribute("lista", usuarioService.obterLista());
+		
+		return "usuario/lista";
 	}
 	
 	@PostMapping(value = "/usuario")
@@ -25,5 +36,13 @@ public class UsuarioController {
 		usuarioService.incluirUsuario(usuario);
 		
 		return "redirect:/";
+	}
+	
+	@GetMapping(value = "/usuario/{id}/excluir")
+	public String excluir(Model model, @PathVariable Integer id) {
+		
+		usuarioService.excluir(id);
+
+		return "redirect:/usuario/lista";
 	}
 }
