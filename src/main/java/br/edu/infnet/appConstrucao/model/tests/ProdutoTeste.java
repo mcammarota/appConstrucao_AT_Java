@@ -44,7 +44,7 @@ public class ProdutoTeste {
 		
 		try {
 			Estrutura e1 = new Estrutura("Estrutura do 1º projeto", 400, 30);
-			e1.setDescricao("Concreto armado convencional");
+			e1.setCaracteristica("Concreto armado convencional");
 			e1.setTamanhoFerragem(10);
 			e1.setMetalica(false);
 			System.out.printf("Produto -> %s", e1.obterProduto());
@@ -54,7 +54,7 @@ public class ProdutoTeste {
 		
 		try {
 			Estrutura e1 = new Estrutura("Estrutura do 2º projeto", 700, 25);
-			e1.setDescricao("Concreto armado convencional");
+			e1.setCaracteristica("Concreto armado convencional");
 			e1.setTamanhoFerragem(12);
 			e1.setMetalica(true);
 			System.out.printf("Produto -> %s", e1.obterProduto());
@@ -65,7 +65,7 @@ public class ProdutoTeste {
 		// Exception na ferragem
 		try {
 			Estrutura e3 = new Estrutura("Estrutura do 3º projeto", 200, 25);
-			e3.setDescricao("Concreto armado convencional");
+			e3.setCaracteristica("Concreto armado convencional");
 			e3.setTamanhoFerragem(0);
 			e3.setMetalica(true);
 			System.out.printf("Produto -> %s", e3.obterProduto());

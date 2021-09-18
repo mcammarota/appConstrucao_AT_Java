@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import br.edu.infnet.appConstrucao.model.domain.Aluno;
 import br.edu.infnet.appConstrucao.model.domain.Usuario;
 import br.edu.infnet.appConstrucao.model.service.UsuarioService;
 

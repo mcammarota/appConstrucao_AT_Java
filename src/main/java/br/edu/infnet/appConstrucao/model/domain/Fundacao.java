@@ -1,12 +1,19 @@
 package br.edu.infnet.appConstrucao.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.appConstrucao.model.exceptions.NecessitaFundacaoProfundaException;
 
+@Entity
 public class Fundacao extends Produto {
 
 	private boolean fundacaoRasa;
 	private String tipo;
 	private float profundidade;
+	
+	public Fundacao() {
+		
+	}
 	
 	public Fundacao(String descricao, float valor, int prazoEntrega) {
 		super(descricao, valor, prazoEntrega);

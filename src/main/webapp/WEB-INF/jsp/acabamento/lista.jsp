@@ -15,7 +15,13 @@
 
 	<div class="container">
 
-		<c:if test="${not empty lista}">
+		<form action="/acabamento" method="get">
+			<button type="submit" class="btn btn-link">Incluir</button>
+		</form>
+
+		<hr>
+
+		<c:if test="${not empty acabamentos}">
 		
 			<c:if test="${not empty msg}">
 				<div class="alert alert-success">
@@ -23,7 +29,7 @@
 				</div>
 			</c:if>
 
-			<h4>Quantidade de usuários existentes: ${lista.size()}</h4>
+			<h4>Quantidade de acabamentos existentes: ${acabamentos.size()}</h4>
 
 			<hr>
 
@@ -31,34 +37,34 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nome</th>
-						<th>E-mail</th>
-						<th>Empresas</th>
-						<th>Produtos</th>
-						<c:if test="${user.admin}">
-							<th></th>
-						</c:if>						
+						<th>Descrição</th>
+						<th>Valor</th>
+						<th>Prazo</th>
+						<th>Piso</th>
+						<th>Pintura</th>
+						<th>Rodapé</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="u" items="${lista}">
+					<c:forEach var="a" items="${acabamentos}">
 						<tr>
-							<td>${u.id}</td>
-							<td>${u.nome}</td>
-							<td>${u.email}</td>
-							<td>${u.empresas.size()}</td>
-							<td>${u.produtos.size()}</td>
-							<c:if test="${user.admin}">
-								<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
-							</c:if>								
+							<td>${a.id}</td>
+							<td>${a.descricao}</td>
+							<td>${a.valor}</td>
+							<td>${a.prazoEntrega}</td>
+							<td>${a.piso}</td>
+							<td>${a.pintura}</td>
+							<td>${a.rodape}</td>
+							<td><a href="/acabamento/${a.id}/excluir">Excluir</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</c:if>
 
-		<c:if test="${empty lista}">
-			<h4>Não existem usuários cadastrados!</h4>
+		<c:if test="${empty acabamentos}">
+			<h4>Não existem acabamentos cadastrados!</h4>
 		</c:if>
 	</div>
 </body>

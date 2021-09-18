@@ -7,8 +7,13 @@
 		<ul class="nav navbar-nav">
 			<li class="active"><a href="#">Home</a></li>
 			<c:if test="${not empty user}">
-				<li><a href="/aluno/lista">Aluno</a></li>
 				<li><a href="/usuario/lista">Usuário</a></li>
+				<li><a href="/empresa/lista">Empresa</a></li>
+				<li><a href="/produto/lista">Produto</a></li>
+				<li><a href="/acabamento/lista">Acabamento</a></li>
+				<li><a href="/estrutura/lista">Estrutura</a></li>
+				<li><a href="/fundacao/lista">Fundação</a></li>
+				<li><a href="/cotacao/lista">Cotação</a></li>
 			</c:if>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">

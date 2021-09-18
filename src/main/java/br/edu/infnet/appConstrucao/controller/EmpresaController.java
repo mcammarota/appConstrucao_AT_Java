@@ -8,49 +8,49 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import br.edu.infnet.appConstrucao.model.domain.Aluno;
+import br.edu.infnet.appConstrucao.model.domain.Empresa;
 import br.edu.infnet.appConstrucao.model.domain.Usuario;
-import br.edu.infnet.appConstrucao.model.service.AlunoService;
+import br.edu.infnet.appConstrucao.model.service.EmpresaService;
 
 @Controller
-public class AlunoController {
+public class EmpresaController {
 
 	@Autowired
-	private AlunoService alunoService;
+	private EmpresaService empresaService;
 	
-	@GetMapping(value = "/aluno")
+	@GetMapping(value = "/empresa")
 	public String tela() {
 		
-		return "aluno/cadastro";
+		return "empresa/cadastro";
 	}
 	
-	@GetMapping(value = "/aluno/lista")
+	@GetMapping(value = "/empresa/lista")
 	public String telaLista(Model model, @SessionAttribute("user") Usuario usuario) {
 		
-		model.addAttribute("lista", alunoService.obterLista(usuario));
+		model.addAttribute("lista", empresaService.obterLista(usuario));
 		
-		return "aluno/lista";
+		return "empresa/lista";
 	}
 
-	@PostMapping(value = "/aluno/incluir")
-	public String incluir(Model model, Aluno aluno, @SessionAttribute("user") Usuario usuario) {
+	@PostMapping(value = "/empresa/incluir")
+	public String incluir(Model model, Empresa empresa, @SessionAttribute("user") Usuario usuario) {
 		
-		aluno.setUsuario(usuario);
+		empresa.setUsuario(usuario);
 		
-		alunoService.incluir(aluno);
+		empresaService.incluir(empresa);
 		
-		String mensagem = "O aluno " + aluno.getNome() + " foi cadastrado com sucesso!";
+		String mensagem = "A empresa " + empresa.getNome() + " foi cadastrada com sucesso!";
 		
 		model.addAttribute("msg", mensagem);
 		
 		return telaLista(model, usuario);
 	}
 	
-	@GetMapping(value = "/aluno/{id}/excluir")
+	@GetMapping(value = "/empresa/{id}/excluir")
 	public String excluir(@PathVariable Integer id) {
 		
-		alunoService.excluir(id);
+		empresaService.excluir(id);
 
-		return "redirect:/aluno/lista";
+		return "redirect:/empresa/lista";
 	}
 }

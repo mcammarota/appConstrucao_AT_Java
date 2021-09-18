@@ -1,12 +1,19 @@
 package br.edu.infnet.appConstrucao.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.appConstrucao.model.exceptions.TamanhoFerragemZeradaOuNegativaException;
 
+@Entity
 public class Estrutura extends Produto {
 
-	private String descricao;
+	private String caracteristica;
 	private float tamanhoFerragem;
 	private boolean metalica;
+	
+	public Estrutura() {
+
+	}
 	
 	public Estrutura(String descricao, float valor, int prazoEntrega) {
 		super(descricao, valor, prazoEntrega);
@@ -18,7 +25,7 @@ public class Estrutura extends Produto {
 		StringBuilder sb = new StringBuilder();
 		sb.append(super.toString());
 		sb.append(";");
-		sb.append(this.descricao);
+		sb.append(this.caracteristica);
 		sb.append(";");
 		sb.append(this.tamanhoFerragem);
 		sb.append(";");
@@ -45,12 +52,12 @@ public class Estrutura extends Produto {
 		return this.getPrazoEntrega() * ValorMaoObraMetalicaPorDia;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getCaracteristica() {
+		return caracteristica;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setCaracteristica(String caracteristica) {
+		this.caracteristica = caracteristica;
 	}
 
 	public float getTamanhoFerragem() {

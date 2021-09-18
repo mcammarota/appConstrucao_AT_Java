@@ -15,7 +15,7 @@
 
 	<div class="container">
 
-		<c:if test="${not empty lista}">
+		<c:if test="${not empty produtos}">
 		
 			<c:if test="${not empty msg}">
 				<div class="alert alert-success">
@@ -23,7 +23,7 @@
 				</div>
 			</c:if>
 
-			<h4>Quantidade de usuários existentes: ${lista.size()}</h4>
+			<h4>Quantidade de produtos existentes: ${produtos.size()}</h4>
 
 			<hr>
 
@@ -31,34 +31,28 @@
 				<thead>
 					<tr>
 						<th>ID</th>
-						<th>Nome</th>
-						<th>E-mail</th>
-						<th>Empresas</th>
-						<th>Produtos</th>
-						<c:if test="${user.admin}">
-							<th></th>
-						</c:if>						
+						<th>Descrição</th>
+						<th>Valor</th>
+						<th>Prazo</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="u" items="${lista}">
+					<c:forEach var="p" items="${produtos}">
 						<tr>
-							<td>${u.id}</td>
-							<td>${u.nome}</td>
-							<td>${u.email}</td>
-							<td>${u.empresas.size()}</td>
-							<td>${u.produtos.size()}</td>
-							<c:if test="${user.admin}">
-								<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
-							</c:if>								
+							<td>${p.id}</td>
+							<td>${p.descricao}</td>
+							<td>${p.valor}</td>
+							<td>${p.prazoEntrega}</td>
+							<td><a href="/produto/${p.id}/excluir">Excluir</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
 			</table>
 		</c:if>
 
-		<c:if test="${empty lista}">
-			<h4>Não existem usuários cadastrados!</h4>
+		<c:if test="${empty produtos}">
+			<h4>Não existem produtos cadastrados!</h4>
 		</c:if>
 	</div>
 </body>

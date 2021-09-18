@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import br.edu.infnet.appConstrucao.model.domain.Endereco;
 import br.edu.infnet.appConstrucao.model.domain.Usuario;
 import br.edu.infnet.appConstrucao.model.service.UsuarioService;
 
@@ -31,7 +32,9 @@ public class UsuarioController {
 	}
 	
 	@PostMapping(value = "/usuario")
-	public String incluirUsuario(Usuario usuario) {
+	public String incluirUsuario(Usuario usuario, Endereco endereco) {
+		
+		usuario.setEndereco(endereco);
 
 		usuarioService.incluirUsuario(usuario);
 		

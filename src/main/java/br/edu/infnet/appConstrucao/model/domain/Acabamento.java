@@ -1,12 +1,19 @@
 package br.edu.infnet.appConstrucao.model.domain;
 
+import javax.persistence.Entity;
+
 import br.edu.infnet.appConstrucao.model.exceptions.PisoNuloException;
 
+@Entity
 public class Acabamento extends Produto {
 	
 	private String piso;
 	private String pintura;
 	private boolean rodape;
+	
+	public Acabamento() {
+		
+	}
 
 	public Acabamento(String descricao, float valor, int prazoEntrega) {
 		super(descricao, valor, prazoEntrega);
