@@ -48,9 +48,15 @@
 							<td>${u.email}</td>
 							<td>${u.empresas.size()}</td>
 							<td>${u.produtos.size()}</td>
+							<td>
 							<c:if test="${user.admin}">
-								<td><a href="/usuario/${u.id}/excluir">Excluir</a></td>
-							</c:if>								
+								<c:choose>							
+									<c:when test = "${user.id != u.id}">
+										<a href="/usuario/${u.id}/excluir">Excluir</a>
+									</c:when>							
+								</c:choose>
+							</c:if>
+			        	</td>							
 						</tr>
 					</c:forEach>
 				</tbody>

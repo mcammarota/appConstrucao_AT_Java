@@ -34,4 +34,13 @@ public class EmpresaService {
 		
 		empresaRepository.deleteById(id);
 	}
+	
+	public Empresa obterPorId(Integer id) {
+		
+		return empresaRepository.findById(id).orElse(null);
+	}
+	
+	public int obterQtde() {
+		return (int) empresaRepository.count();
+	}
 }

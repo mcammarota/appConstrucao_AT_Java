@@ -11,6 +11,8 @@
 </head>
 <body>
 
+	<c:set var="botao" value=""/>
+
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
 
 	<div class="container">
@@ -18,12 +20,20 @@
 	  <form action="/cotacao/incluir" method="post">
 	  
 	  	<div class="form-group">
-		  <label>Empresa:</label>
-		  <select class="form-control" name="empresa.id">
-		  		<c:forEach var="e" items="${empresas}">
-					<option value="${e.id}">${e.nome}</option>
-				</c:forEach>
-		  </select>
+	  	<c:if test="${not empty empresas}">
+			  <label>Empresa:</label>
+			  <select class="form-control" name="empresa.id">
+			  		<c:forEach var="e" items="${empresas}">
+						<option value="${e.id}">${e.nome}</option>
+					</c:forEach>
+			  </select>
+		</c:if>
+		
+		<c:if test="${empty empresas}">
+		  	  <c:set var="botao" value="disabled"/>
+		  	  <label>Solicitante: não há registros cadastrados!</label>
+		  </c:if>
+		  
 		</div>	
 
 	    <div class="form-group">
@@ -31,18 +41,24 @@
 	      <input value="Primeira cotacao" type="text" class="form-control" placeholder="Entre com a descrição da cotação" name="descricao">
 	    </div>
 	    
-	    <div class="form-group">
-		  <label>Produtos:</label>
-		  <c:forEach var="p" items="${produtos}">
-		  	<div class="form-check">
-		  		<label class="form-check-label">
-		  		<input name="produtosId" type="checkbox" value="${p.id}">${p.descricao}
-		  		</label>		
-		  	</div>
-		  </c:forEach>
+	    <div class="form-group">			
+		<c:if test="${not empty produtos}">
+			<label>Produtos:</label>
+			<c:forEach var="p" items="${produtos}">
+			  	<div class="form-check">
+					<label class="form-check-label">
+					<input name="produtosId" type="checkbox" checked="checked" value="${p.id}"> ${p.descricao}
+					</label>
+				</div>
+			</c:forEach>
+		</c:if>
+		<c:if test="${empty produtos}">
+		    <c:set var="botao" value="disabled"/>
+			<label>Produtos: não há registros cadastrados!</label>
+		</c:if>
 		</div>
 		
-	    <button type="submit" class="btn btn-default">Cadastrar</button>
+	    <button type="submit" ${botao} class="btn btn-default">Cadastrar</button>
 	  </form>
 	</div>
 	

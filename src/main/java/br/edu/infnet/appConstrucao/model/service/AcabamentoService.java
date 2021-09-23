@@ -39,4 +39,8 @@ public class AcabamentoService {
 		
 		return acabamentoRepository.findById(id).orElse(null);
 	}
+	
+	public int obterQtde() {
+		return (int) acabamentoRepository.count();
+	}
 }

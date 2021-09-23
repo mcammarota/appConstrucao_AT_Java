@@ -41,4 +41,8 @@ public class CotacaoService {
 		
 		return cotacaoRepository.findById(id).orElse(null);
 	}
+	
+	public int obterQtde() {
+		return (int) cotacaoRepository.count();
+	}
 }

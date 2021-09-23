@@ -41,4 +41,8 @@ public class EstruturaService {
 		
 		return estruturaRepository.findById(id).orElse(null);
 	}
+	
+	public int obterQtde() {
+		return (int) estruturaRepository.count();
+	}
 }

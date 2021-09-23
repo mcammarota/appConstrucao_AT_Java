@@ -47,10 +47,26 @@ public class EmpresaController {
 	}
 	
 	@GetMapping(value = "/empresa/{id}/excluir")
-	public String excluir(@PathVariable Integer id) {
+	public String excluir(Model model, @PathVariable Integer id, @SessionAttribute("user") Usuario usuario) {
 		
-		empresaService.excluir(id);
+		Empresa empresa = empresaService.obterPorId(id);
+		
+		String mensagem = null;
+		
+		try {
+			
+			empresaService.excluir(id);
+			
+			mensagem = "A empresa " + empresa.getNome() + " foi excluída com sucesso!";
+			
+		} catch (Exception e) {
+			
+			mensagem = "Não foi possível realizar a exclusão da empresa.";
+			
+		}
+		
+		model.addAttribute("msg", mensagem);
 
-		return "redirect:/empresa/lista";
+		return telaLista(model, usuario);
 	}
 }
