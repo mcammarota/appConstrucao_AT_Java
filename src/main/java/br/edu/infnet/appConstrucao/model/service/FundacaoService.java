@@ -43,4 +43,8 @@ public class FundacaoService {
 		
 		return fundacaoRepository.findById(id).orElse(null);
 	}
+	
+	public int obterQtde() {
+		return (int) fundacaoRepository.count();
+	}
 }

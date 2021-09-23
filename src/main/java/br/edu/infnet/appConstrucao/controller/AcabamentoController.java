@@ -49,9 +49,21 @@ public class AcabamentoController {
 		
 		Acabamento acab = acabamentoService.obterPorId(id);
 		
-		acabamentoService.excluir(id);
+		String mensagem = null;
 		
-		model.addAttribute("msg", "Acabamento removido com sucesso!");
+		try {
+			
+			acabamentoService.excluir(id);
+			
+			mensagem = "Acabamento removido com sucesso!";
+			
+		} catch (Exception e) {
+			
+			mensagem = "Não foi possível realizar a exclusão do acabamento.";
+			
+		}
+		
+		model.addAttribute("msg", mensagem);
 		
 		return telaLista(model, usuario);
 	}

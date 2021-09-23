@@ -30,9 +30,21 @@ public class ProdutoController {
 		
 		Produto produto = produtoService.obterPorId(id);
 		
-		produtoService.excluir(id);
+		String mensagem = null;
 		
-		model.addAttribute("msg", "Produto removido com sucesso!");
+		try {
+			
+			produtoService.excluir(id);
+			
+			mensagem = "Produto removido com sucesso!";
+			
+		} catch (Exception e) {
+			
+			mensagem = "Não foi possível realizar a exclusão do produto.";
+			
+		}
+		
+		model.addAttribute("msg", mensagem);
 		
 		return telaLista(model, usuario);
 	}

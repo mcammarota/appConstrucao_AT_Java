@@ -43,7 +43,7 @@
 	    </div>
 	    
 	    <div class="form-group">
-			<label class="checkbox-inline"><input type="checkbox" name="metalica" checked>Metálica</label>
+			<label class="checkbox-inline"><input type="checkbox" name="metalica">Metálica</label>
 	    </div>
 		
 	    <button type="submit" class="btn btn-default">Cadastrar</button>

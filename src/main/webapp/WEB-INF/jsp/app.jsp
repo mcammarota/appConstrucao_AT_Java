@@ -11,16 +11,15 @@
 <body>
 
 	<c:import url="/WEB-INF/jsp/menu.jsp"/>
-
+	
 	<div class="container">
-	  <h3>Assessment de Java Web</h3>
-	  <br>
-	  <h4>Instituto Infnet</h4>
-	  <h4>Professor: Elberth Moraes</h4>
-	  <h4>Autor: Marcos Cammarota</h4>	
-	  
-	  <a href="https://github.com/mcammarota">GitHub</a>
-
+	  <h3>Quantidades:</h3>  
+		<ul class="list-group">
+	    <c:forEach var="mapa" items="${total}">
+	    	<li class="list-group-item">${mapa.key} <span class="badge">${mapa.value}</span></li>
+	    </c:forEach>
+	  	</ul>
 	</div>
+	
 </body>
 </html>

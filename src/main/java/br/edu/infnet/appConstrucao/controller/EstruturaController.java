@@ -51,9 +51,21 @@ public class EstruturaController {
 		
 		Estrutura estrutura = estruturaService.obterPorId(id);
 		
-		estruturaService.excluir(id);
+		String mensagem = null;
 		
-		model.addAttribute("msg", "Estrutura removida com sucesso!");
+		try {
+			
+			estruturaService.excluir(id);
+			
+			mensagem = "Estrutura removida com sucesso!";
+			
+		} catch (Exception e) {
+			
+			mensagem = "Não foi possível realizar a exclusão da estrutura.";
+			
+		}
+		
+		model.addAttribute("msg", mensagem);
 		
 		return telaLista(model, usuario);
 	}

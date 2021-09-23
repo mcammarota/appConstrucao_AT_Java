@@ -1,5 +1,8 @@
 package br.edu.infnet.appConstrucao.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +15,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
 import br.edu.infnet.appConstrucao.model.domain.Usuario;
+import br.edu.infnet.appConstrucao.model.service.AcabamentoService;
+import br.edu.infnet.appConstrucao.model.service.CotacaoService;
+import br.edu.infnet.appConstrucao.model.service.EmpresaService;
+import br.edu.infnet.appConstrucao.model.service.EstruturaService;
+import br.edu.infnet.appConstrucao.model.service.FundacaoService;
 import br.edu.infnet.appConstrucao.model.service.UsuarioService;
 
 @SessionAttributes("user")
@@ -20,6 +28,32 @@ public class AcessoController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	@Autowired
+	private EmpresaService empresaService;
+	@Autowired
+	private AcabamentoService acabamentoService;
+	@Autowired
+	private EstruturaService estruturaService;
+	@Autowired
+	private FundacaoService fundacaoService;
+	@Autowired
+	private CotacaoService cotacaoService;
+	
+	@GetMapping(value = "/app")
+	public String telaApp(Model model) {
+
+		Map<String, Integer> mapaTotal = new HashMap<String, Integer>();
+		mapaTotal.put("Usuários", usuarioService.obterQtde());
+		mapaTotal.put("Empresas", empresaService.obterQtde());
+		mapaTotal.put("Acabamentos", acabamentoService.obterQtde());
+		mapaTotal.put("Estruturas", estruturaService.obterQtde());
+		mapaTotal.put("Fundações", fundacaoService.obterQtde());
+		mapaTotal.put("Cotações", cotacaoService.obterQtde());
+
+		model.addAttribute("total", mapaTotal);
+		
+		return "app";
+	}
 
 	@GetMapping(value = "/")
 	public String telaHome() {

@@ -53,9 +53,21 @@ public class FundacaoController {
 		
 		Fundacao fundacao = fundacaoService.obterPorId(id);
 		
-		fundacaoService.excluir(id);
+		String mensagem = null;
 		
-		model.addAttribute("msg", "Fundação removida com sucesso!");
+		try {
+			
+			fundacaoService.excluir(id);
+			
+			mensagem = "Fundação removida com sucesso!";
+			
+		} catch (Exception e) {
+			
+			mensagem = "Não foi possível realizar a exclusão da fundação.";
+			
+		}
+		
+		model.addAttribute("msg", mensagem);
 		
 		return telaLista(model, usuario);
 	}
